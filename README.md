@@ -1,4 +1,4 @@
-# 📄 PDF Batch Renaming Tool for CSDC-PDF
+# 📄 PDF Batch Renaming Tool for CSDC
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
@@ -10,7 +10,7 @@
 
 ## 🚀 Project Overview
 
-A local offline PDF batch renaming tool designed for securities document
+A local offline PDF batch renaming tool designed for CSDC (China Securities Depository and Clearing Corporation) securities document
 processing.
 
 Automatically extracts: - Sub-account number - Holder name
