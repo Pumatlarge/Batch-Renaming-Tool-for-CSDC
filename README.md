@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-🌍 Language / 语言： [🇨🇳 中文说明](#中文说明) \| [🇺🇸 English](#english)
+🌍 Language / 语言： [中文说明](#中文说明) \| [English](#english)
 
 ------------------------------------------------------------------------
 
