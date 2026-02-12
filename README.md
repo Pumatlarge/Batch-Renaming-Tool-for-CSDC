@@ -1,119 +1,155 @@
-# PDF-Batch-Renaming-Tool-for-CSDC-China-Securities-Depository-and-Clearing-Corporation
+# 📄 PDF Batch Renaming Tool for CSDC-PDF
 
----
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📘 Technical Documentation: PDF Batch Renaming Tool
+🌍 Language / 语言： [🇨🇳 中文说明](#中文说明) \| [🇺🇸 English](#english)
 
-**Development and Packaging Guide for PDF Batch Renaming Tool**
+------------------------------------------------------------------------
 
-### I. Project Background
+## 🚀 Project Overview
 
-When processing Security Holding Change Information PDFs exported from the **CSDC (China Securities Depository and Clearing Corporation)** system, the following requirements must be met:
+A local offline PDF batch renaming tool designed for securities document
+processing.
 
-* **Batch processing:** Efficiently read multiple PDF files.
-* **Data Extraction:** Identify and extract:
-1. Securities Sub-account Number
-2. Holder Name
+Automatically extracts: - Sub-account number - Holder name
 
+Generates standardized filenames while preserving original files.
 
-* **Standardized Naming:** Automatically generate filenames based on extracted data.
-* **Data Integrity:** Preserve original files and output to a dedicated sub-folder.
-* **Ease of Use:** Support drag-and-drop functionality for offline execution.
+------------------------------------------------------------------------
 
-### II. Functional Requirements
+# 中文说明
 
-#### 1. Input Methods
+## 📌 项目简介
 
-The tool supports:
+本工具用于批量处理中国证券登记结算系统导出的 PDF 文件。
 
-* Dragging and dropping single/multiple PDFs.
-* Dragging and dropping single/multiple folders.
-* Mixed drag-and-drop (files and folders combined).
-* Double-clicking the executable to manually select a folder via a popup window.
+自动提取：
 
-#### 2. Naming Convention
+-   证券子账户号码
+-   持有人名称
 
-New Filename = `Securities Sub-account Number-Holder Name.pdf`
+并生成"证券账户号码-人名" 标准格式文件名。
 
-> **Example:** `A290546372-李大强.pdf`
+------------------------------------------------------------------------
 
-#### 3. Output Rules
+## ✨ 功能特点
 
-* **Non-destructive:** Does not modify the original files.
-* **Directory Structure:** Creates a sub-folder named `Renamed_Output` in the source directory.
-* **Duplicate Handling:** Automatically appends a suffix if a file exists:
-* `A290546372-李大强.pdf`
-* `A290546372-李大强(2).pdf`
+-   ✅ 支持拖拽单个 / 多个 PDF
+-   ✅ 支持拖拽文件夹
+-   ✅ 自动创建输出子文件夹
+-   ✅ 自动防止重名
+-   ✅ 保留原文件
+-   ✅ 自动生成日志文件
+-   ✅ 完全离线运行
 
+------------------------------------------------------------------------
 
+## 📂 命名规则
 
-#### 4. Log Generation
+    新文件名 = 证券子账户号码-持有人名称.pdf
 
-Automatically generates a `Renaming_Log.csv` containing:
+------------------------------------------------------------------------
 
-* `Original Filename` | `Output Filename`
+## 📁 输出目录结构
 
-### III. Technical Stack
+    某目录
+    ├── 原PDF文件
+    ├── 已重命名输出
+    │   ├── A2900849561-陈小美.pdf
+    │   ├── 重命名日志.csv
 
-* **Python 3.13**
-* **pdfplumber:** For PDF text parsing.
-* **shutil:** For file copying operations.
-* **PyInstaller:** For converting the script into a standalone EXE.
+------------------------------------------------------------------------
 
-### IV. Core Logic Implementation
+## 🛠 安装方式
 
-* **Field Extraction (Regex):**
-`m1 = re.search(r"证券子账户号码\s*：\s*([A-Za-z0-9]+)", text)`
-`m2 = re.search(r"持有人名称\s*：\s*(\S+)", text)`
-* **File Operation:**
-Uses `shutil.copy2(src_path, dst_path)` to ensure original files are preserved along with their original timestamps.
+### 方式一：直接下载 EXE（推荐）
 
-### V. Packaging Process (EXE)
+在 Releases 页面下载：
 
-#### 1. Create a Clean Virtual Environment (Highly Recommended)
+    PDF重命名工具v0.2-中登投资者证券持有变更信息.exe
 
-```bash
-python -m venv packenv
-.\packenv\Scripts\activate
-pip install -U pip
-pip install pyinstaller pdfplumber
+------------------------------------------------------------------------
 
+### 方式二：源码运行
+
+``` bash
+pip install pdfplumber
+python rename_pdf_drag.py
 ```
 
-#### 2. Packaging Command
+------------------------------------------------------------------------
 
-```bash
-pyinstaller --onefile --console --clean --noconfirm rename_pdf_drag.py -n PDF_Renaming_Tool
+## 🔒 安全说明
 
+-   本工具完全本地运行
+-   不联网
+-   不上传数据
+-   适用于证券类敏感文件内网处理
+
+------------------------------------------------------------------------
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+------------------------------------------------------------------------
+
+# English
+
+## 📌 Overview
+
+This tool is designed for batch processing PDF files exported from
+securities systems.
+
+It automatically extracts:
+
+-   Sub-account number
+-   Holder name
+
+and generates standardized filenames.
+
+------------------------------------------------------------------------
+
+## ✨ Features
+
+-   ✅ Drag & Drop support
+-   ✅ Folder support
+-   ✅ Duplicate prevention
+-   ✅ Log file generation
+-   ✅ Original files preserved
+-   ✅ Fully offline
+
+------------------------------------------------------------------------
+
+## 📂 Naming Rule
+
+    SubAccountNumber-HolderName.pdf
+
+------------------------------------------------------------------------
+
+## 🛠 Installation
+
+### Option 1: Download EXE (Recommended)
+
+Download from the Releases page:
+
+    PDF重命名工具v0.2-中登投资者证券持有变更信息.exe
+
+------------------------------------------------------------------------
+
+### Option 2: Run from Source
+
+``` bash
+pip install pdfplumber
+python rename_pdf_drag.py
 ```
 
-#### 3. Output
+------------------------------------------------------------------------
 
-The final executable is located in: `dist\PDF_Renaming_Tool.exe`
+## 🔒 Security Notice
 
-### VI. Troubleshooting
-
-| Issue | Cause | Solution |
-| --- | --- | --- |
-| **Drag & Drop fails** | Running as Administrator | Do **not** run as Admin; drag files directly onto the EXE icon. |
-| **PKG phase stuck** | Global environment contains large libs (e.g., torch, pandas) | Use a clean **venv** for packaging. |
-| **Empty "dist" folder** | Antivirus interference or incomplete build | Disable antivirus temporarily and check terminal logs. |
-
-### VII. Directory Structure Example
-
-```text
-Source Directory/
-├── Original_Files.pdf
-├── Renamed_Output/
-│   ├── A290546372-李大强.pdf
-│   └── Renaming_Log.csv
-
-```
-
-### VIII. Security & Compliance
-
-* **Local Execution:** The tool runs entirely offline.
-* **Privacy:** No data is uploaded or transmitted over the network.
-* **Suitability:** Designed for processing sensitive securities registration documents within internal networks.
-
----
+-   Fully offline
+-   No data upload
+-   Safe for internal securities documents
