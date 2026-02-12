@@ -64,7 +64,7 @@ Generates standardized filenames while preserving original files.
 
 ## 🛠 安装方式
 
-### 方式一：直接下载 EXE（推荐）
+### 直接下载 EXE
 
 在 Releases 页面下载：
 
@@ -72,12 +72,9 @@ Generates standardized filenames while preserving original files.
 
 ------------------------------------------------------------------------
 
-### 方式二：源码运行
+### 使用方法
 
-``` bash
-pip install pdfplumber
-python rename_pdf_drag.py
-```
+将单个文件/多个文件/文件夹拖动至exe文件上，可自动生产新重命名文件。
 
 ------------------------------------------------------------------------
 
@@ -131,7 +128,7 @@ and generates standardized filenames.
 
 ## 🛠 Installation
 
-### Option 1: Download EXE (Recommended)
+### Download EXE
 
 Download from the Releases page:
 
@@ -139,12 +136,9 @@ Download from the Releases page:
 
 ------------------------------------------------------------------------
 
-### Option 2: Run from Source
+### How to Use
 
-``` bash
-pip install pdfplumber
-python rename_pdf_drag.py
-```
+Drag a single file, multiple files, or a folder onto the executable file to automatically generate renamed files.
 
 ------------------------------------------------------------------------
 
